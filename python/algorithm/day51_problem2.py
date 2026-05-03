@@ -1,0 +1,25 @@
+def get_pattern(numbers):
+    stage = 0
+    count = 0
+
+    for i in range(1, len(numbers)):
+        if numbers[i] > numbers[i-1]:
+            curr = 1
+        elif numbers [i] < numbers[i-1]:
+            curr = -1
+        else:
+            continue
+
+        if stage == 0 and curr == -1:
+            stage = 1
+        elif stage == 1 and curr == 1:
+            stage = 2
+        elif stage == 2 and curr == -1:
+            count += 1
+            stage = 0
+
+    return count
+numbers = [5, 3, 4, 2, 3, 1]
+print(get_pattern(numbers))   
+
+        
